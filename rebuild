@@ -1,0 +1,12 @@
+#!/bin/bash
+
+(
+  cd ../greymatter-core
+  source ./rebuild
+)
+kubectl apply -f app/fake.yaml
+kubectl apply -f app/zk.yaml
+kubectl apply -f app/kafka.yaml
+kubectl apply -f app/jwt.yaml
+kubectl apply -f app/mongo.yaml
+kubectl apply -f app/gmdata.yaml
