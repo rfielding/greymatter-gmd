@@ -5,10 +5,12 @@
   source ./rebuild
 )
 kubectl create namespace greymatter-gmd
+kubectl apply -f app/cm.yaml
 kubectl apply -f app/fake.yaml
 kubectl apply -f app/zk.yaml
 kubectl apply -f app/kafkadata.yaml
 kubectl apply -f app/jwt.yaml
 kubectl apply -f app/mongo.yaml
 kubectl apply -f app/gmdata.yaml
+kubectl apply -n greymatter-gmd -f app/redis.yaml
 kubectl apply -f k8s

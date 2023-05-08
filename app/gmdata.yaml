@@ -37,9 +37,15 @@ spec:
         - name: CLIENT_JWT_ENDPOINT_PREFIX
           value: ""
         - name: JWT_API_KEY
-          value: "Zm9vCg=="
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: JWT_API_KEY
         - name: JWT_PUB
-          value: "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHYk1CQUdCeXFHU000OUFnRUdCU3VCQkFBakE0R0dBQVFCSUVrNGpHL1FEMkZwNURxcmMrTzFPVy9CaG1BLwpKcmgyRFRaRWpybEZONnJYbTA0Vms0bUluNENZSmJ0VDdIQjc2cVJIeE9DNTFORVk0eFZHb1RUUVZta0Fnc3ljCllVdEdqZ3pKQUdTZExsSXZKSmtabWkrSjZBbWVtNng5UFZkajcxc2hHSnhNdjM4SDFTa2RRS29EZmllS3dZbFIKNENPUWFxdXdJVEpPYWd2R1VUQT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: JWT_PUB
         - name: CLIENT_PREFIX
           value: ""
         - name: CLIENT_USE_TLS
