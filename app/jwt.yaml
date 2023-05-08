@@ -40,7 +40,10 @@ spec:
               name: app-config
               key: JWT_PUB
         - name: PRIVATE_KEY
-          value: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1JSGNBZ0VCQkVJQUludTVqbEdaU2Z6M2dMOWczOVNoeE5UaWtUQ0lvUWtFVVUyckdnV1ZJTm9TN3RlM2d1Uk8KK2VKb3FDZTd0Z3pKL1RZcGVxU055elE2UGVTS2JmZC91K2FnQndZRks0RUVBQ09oZ1lrRGdZWUFCQUVnU1RpTQpiOUFQWVdua09xdHo0N1U1YjhHR1lEOG11SFlOTmtTT3VVVTNxdGViVGhXVGlZaWZnSmdsdTFQc2NIdnFwRWZFCjRMblUwUmpqRlVhaE5OQldhUUNDekp4aFMwYU9ETWtBWkowdVVpOGttUm1hTDRub0NaNmJySDA5VjJQdld5RVkKbkV5L2Z3ZlZLUjFBcWdOK0o0ckJpVkhnSTVCcXE3QWhNazVxQzhaUk1BPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: JWT_PRIVATE_KEY
         - name: REDIS_HOST
         - name: TOKEN_EXP_TIME
           value: "30000"
