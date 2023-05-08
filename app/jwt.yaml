@@ -33,7 +33,10 @@ spec:
         - name: ENABLE_TLS
           value: "false"
         - name: JWT_API_KEY
-          value: Zm9vCg==
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: JWT_API_KEY
         - name: JWT_PUB
           valueFrom:
             configMapKeyRef:

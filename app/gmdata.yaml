@@ -59,7 +59,10 @@ spec:
         - name: GMDATA_NAMESPACE_USERFIELD
           value: "email"
         - name: MASTERKEY
-          value: "as8f0safd80fa8e09ae809ae80ae80fea80efa08fa08aef8f0e80ae"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MASTERKEY
         - name: FILE_BUCKET
           value: "decipherers"
         - name: FILE_PARTITION
@@ -70,8 +73,15 @@ spec:
           value: "mongo-master"
         - name: MONGODB
           value: "chili"
-            #- name: KAFKA_PEERS
-            #  value: "kafkadata:2181"
+        - name: KAFKA_PEERS
+          value: "kafkadata:2181"
+        volumeMounts:
+        - name: blobs
+          mountPath: /buckets/decipherers/gmdata
+      volumes:
+      - name: blobs
+        persistentVolumeClaim:
+          claimName: mongo-pv-claim
 ---
 apiVersion: v1
 kind: Service
