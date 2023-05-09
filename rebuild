@@ -1,13 +1,29 @@
 #!/bin/bash
 
+k3d cluster delete gmdata
+
+(
+sudo mkdir ~/mounts
+sudo chmod 777 ~/mounts
+sudo mkdir  ~/mounts/mongo
+sudo chmod 777 ~/mounts/mongo # serve mongo database from here
+sudo mkdir ~/mounts/gmd
+sudo chmod 777 ~/mounts/gmd # serve blobs out of gmdata, when S3 isn't used. requires root :-(
+sudo mkdir ~/mounts/gmdata # ?? is this named after the CLUSTER?
+sudo chmod 777 ~/mounts/gmdata
+)
+
 (
   cd ../greymatter-core
   source ./rebuild
 )
 kubectl create namespace greymatter-gmd
 
+
 kubectl apply -f cfg/pv.yaml
 kubectl apply -f cfg/cm.yaml
+
+kubectl apply -f app/pvc.yaml
 kubectl apply -f app/zk.yaml           # persistent
 kubectl apply -f app/kafkadata.yaml    # persistent
 kubectl apply -f app/jwt.yaml

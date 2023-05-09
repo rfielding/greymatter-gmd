@@ -7,20 +7,23 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 32Gi
+    storage: 16Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "./cfg/gmdata/mongo"
+    path: "/home/rfielding/mounts/mongo"
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: mongo-pv-claim
+  name: gmdata-pv-volume
+  labels:
+    type: local
 spec:
   storageClassName: manual
+  capacity:
+    storage: 32Gi
   accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 16Gi
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/rfielding/mounts/gmd"

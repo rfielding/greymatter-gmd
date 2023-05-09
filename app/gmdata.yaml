@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app: guestbook
       tier: gmdata
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -23,6 +23,9 @@ spec:
       - name: regcreds
       containers:
       - name: gmdata
+        securityContext:
+          allowPrivilegeEscalation: false # hack to be able to have USES3=false and write to disk
+          runAsUser: 0
         image: greymatter.jfrog.io/internal-oci/gm-data:latest
         imagePullPolicy: Always
         ports:
@@ -73,15 +76,15 @@ spec:
           value: "mongo-master"
         - name: MONGODB
           value: "chili"
-        - name: KAFKA_PEERS
-          value: "kafkadata:2181"
-            #        volumeMounts:
-            #        - name: blobs
-            #          mountPath: /buckets/decipherers/gmdata
-            #      volumes:
-            #      - name: blobs
-            #        persistentVolumeClaim:
-            #          claimName: mongo-pv-claim
+            #        - name: KAFKA_PEERS
+            #          value: "kafkadata:2181"
+        volumeMounts:
+        - name: buckets
+          mountPath: /buckets
+      volumes:
+      - name: buckets
+        persistentVolumeClaim:
+          claimName: gmdata-pv-claim
 ---
 apiVersion: v1
 kind: Service
