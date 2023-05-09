@@ -27,13 +27,13 @@ spec:
             memory: 100Mi
         ports:
         - containerPort: 27017
-        volumeMounts:
-        - name: mongodata
-          mountPath: /data
-      volumes:
-      - name: mongodata
-        persistentVolumeClaim:
-          claimName: mongo-pv-claim
+          #        volumeMounts:
+          #        - name: mongodata
+          #          mountPath: /data
+          #      volumes:
+          #      - name: mongodata
+          #        persistentVolumeClaim:
+          #          claimName: mongo-pv-claim
 ---
 apiVersion: v1
 kind: Service

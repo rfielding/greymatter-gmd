@@ -75,13 +75,13 @@ spec:
           value: "chili"
         - name: KAFKA_PEERS
           value: "kafkadata:2181"
-        volumeMounts:
-        - name: blobs
-          mountPath: /buckets/decipherers/gmdata
-      volumes:
-      - name: blobs
-        persistentVolumeClaim:
-          claimName: mongo-pv-claim
+            #        volumeMounts:
+            #        - name: blobs
+            #          mountPath: /buckets/decipherers/gmdata
+            #      volumes:
+            #      - name: blobs
+            #        persistentVolumeClaim:
+            #          claimName: mongo-pv-claim
 ---
 apiVersion: v1
 kind: Service
