@@ -1,3 +1,16 @@
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gmdata-pv-claim
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 32Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -78,13 +91,13 @@ spec:
           value: "chili"
             #        - name: KAFKA_PEERS
             #          value: "kafkadata:2181"
-        volumeMounts:
-        - name: buckets
-          mountPath: /buckets
-      volumes:
-      - name: buckets
-        persistentVolumeClaim:
-          claimName: gmdata-pv-claim
+            #        volumeMounts:
+            #        - name: buckets
+            #          mountPath: /buckets
+            #      volumes:
+            #      - name: buckets
+            #        persistentVolumeClaim:
+            #          claimName: gmdata-pv-claim
 ---
 apiVersion: v1
 kind: Service
