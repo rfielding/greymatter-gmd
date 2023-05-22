@@ -12,12 +12,13 @@ spec:
       storage: 16Gi
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mongo
   labels:
     app: mongo
 spec:
+  serviceName: mongo-master
   selector:
     matchLabels:
       app: mongo
@@ -43,13 +44,13 @@ spec:
             memory: 100Mi
         ports:
         - containerPort: 27017
-          #        volumeMounts:
-          #        - name: mongodata
-          #          mountPath: /data
-          #      volumes:
-          #      - name: mongodata
-          #        persistentVolumeClaim:
-          #          claimName: mongo-pv-claim
+        volumeMounts:
+        - name: mongodata
+          mountPath: /data
+      volumes:
+      - name: mongodata
+        persistentVolumeClaim:
+          claimName: mongo-pv-claim
 ---
 apiVersion: v1
 kind: Service
