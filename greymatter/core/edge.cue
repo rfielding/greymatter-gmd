@@ -16,25 +16,26 @@ Edge: gsl.#Edge & {
 	// to your service definitions.
 	context: Edge.#NewContext & globals
 
-	name:              "edge"
-	display_name:      "Greymatter Gmd Edge"
-	version:           "v1.8.1"
-	description:       "Edge ingress for greymatter-gmd"
-	business_impact:   "high"
-	owner:             "Greymatter Gmd"
-	capability:        ""
+	name:            "edge"
+	display_name:    "Greymatter Gmd Edge"
+	version:         "v1.8.1"
+	description:     "Edge ingress for greymatter-gmd"
+	business_impact: "high"
+	owner:           "Greymatter Gmd"
+	capability:      ""
 	health_options: {
-		tls: gsl.#MTLSUpstream
+		// tls: gsl.#MTLSUpstream
 	}
 	ingress: {
 		// Edge -> HTTP ingress to your container
 		(name): {
 			gsl.#HTTPListener
-			gsl.#MTLSListener
+
+			// gsl.#MTLSListener
 			port: 10809
 			filters: [
-				gsl.#InheadersFilter
-            ]	
+				gsl.#InheadersFilter,
+			]
 		}
 	}
 }
