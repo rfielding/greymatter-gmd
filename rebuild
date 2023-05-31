@@ -1,7 +1,5 @@
 #!/bin/bash
 
-k3d cluster delete gmdata
-
 #(
 #sudo mkdir ~/mounts
 #sudo chmod 777 ~/mounts
@@ -12,11 +10,6 @@ k3d cluster delete gmdata
 #sudo mkdir ~/mounts/gmdata # ?? is this named after the CLUSTER?
 #sudo chmod 777 ~/mounts/gmdata
 #)
-
-(
-  cd ../greymatter-core
-  source ./rebuild
-)
 
 kubectl create namespace greymatter-gmd
 echo ----- PROJECT GITHUB SECRET -----

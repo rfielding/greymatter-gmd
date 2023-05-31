@@ -17,9 +17,6 @@ metadata:
   name: gmdata
   labels:
     app: guestbook
-  annotations:
-    greymatter.io/inject-sidecar-to: "8181"
-    # greymatter.io/configure-sidecar: "true"
 spec:
   selector:
     matchLabels:
