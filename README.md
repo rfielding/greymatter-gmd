@@ -1,6 +1,13 @@
 
 # Greymatter-Gmd
 
+With greymatter-core and this repo checked out,
+bringing up the stack looks like this:
+
+```
+cd ../greymatter-core; ./rebuild) && ./rebuild
+```
+
 A greymatter.io tenant GitOps repository using CUE! :rocket:
 
 ## Prerequisites
