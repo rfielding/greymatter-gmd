@@ -34,7 +34,7 @@ spec:
           "sync", 
           "--ssh-private-key", "/var/lib/greymatter/.ssh/ssh-private-key", 
           "--git", "--forever", 
-          "--branch", "main",
+          "--branch", "rob",
           "--interval", "3s", 
           "--git-dir", "/var/lib/greymatter/checkout", 
           "--redis-addr", "greymatter-datastore.greymatter.svc.cluster.local:6379",
