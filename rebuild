@@ -11,7 +11,8 @@
 #sudo chmod 777 ~/mounts/gmdata
 #)
 
-kubectl create namespace greymatter-gmd
+#kubectl create namespace greymatter-gmd
+
 echo ----- PROJECT GITHUB SECRET -----
 ssh-keyscan github.com > known_hosts
 kubectl create secret generic greymatter-sync-secret \
