@@ -1,13 +1,12 @@
 #!/bin/bash
 
 
-kubectl apply -f cfg/pv.yaml
-kubectl apply -f cfg/cm.yaml
-
-kubectl apply -f app/zk.yaml           # persistent
-kubectl apply -f app/kafkadata.yaml    # persistent
-kubectl apply -f app/jwt.yaml
-kubectl apply -f app/mongo.yaml        # persistent
-kubectl apply -f app/gmdata.yaml       # persistent when not using S3
+kubectl apply -n greymatter-gmd  -f cfg/pv.yaml
+kubectl apply -n greymatter-gmd -f cfg/cm.yaml
+kubectl apply -n greymatter-gmd -f app/zk.yaml           # persistent
+kubectl apply -n greymatter-gmd -f app/kafkadata.yaml    # persistent
+kubectl apply -n greymatter-gmd -f app/jwt.yaml
+kubectl apply -n greymatter-gmd -f app/mongo.yaml        # persistent
+kubectl apply -n greymatter-gmd -f app/gmdata.yaml       # persistent when not using S3
 ##kubectl apply -n greymatter-gmd -f app/redis.yaml
-kubectl apply -f k8s
+kubectl apply -n greymatter-gmd -f k8s

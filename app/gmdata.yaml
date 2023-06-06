@@ -30,7 +30,7 @@ spec:
         tier: gmdata
     spec:
       imagePullSecrets:
-      - name: regcreds
+      - name: greymatter-image-pull
       containers:
       - name: gmdata
         securityContext:
